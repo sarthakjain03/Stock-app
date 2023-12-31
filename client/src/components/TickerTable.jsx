@@ -82,14 +82,14 @@ const TickerTable = () => {
   };
 
   const setCurrPageStocks = async () => {
-    // setLoading(true)
+    setLoading(true)
 
     const { data } = await axios.get(
       `http://localhost:5000/api/stocks/getstocksbypage?page=${page}`
     );
     setUpdatedStockData(data);
     // console.log(updatedStockData);
-    // setLoading(false);
+    setLoading(false);
   }
 
   // const addDataToDatabase = async () => {
@@ -114,14 +114,12 @@ const TickerTable = () => {
     return () => clearInterval(dayInterval)
   }, [date])
 
-  useEffect(async () => {
-    await fetchUpdatedPriceData()
+  useEffect(() => {
+    fetchUpdatedPriceData()
   }, [day])
 
-  useEffect(async () => {
-    setLoading(true)
-    await setCurrPageStocks()
-    setLoading(false)
+  useEffect(() => {
+    setCurrPageStocks()
   }, [page]);
 
   const handlePageChange = (event, newpage) => {

@@ -4,6 +4,8 @@ import './App.css'
 
 import LandingPage from './pages/LandingPage'
 import StockDetails from './pages/StockDetails'
+import SearchPage from './pages/SearchPage'
+import Navbar from './components/Navbar'
 
 function App() {
   
@@ -12,13 +14,19 @@ function App() {
     <>
       <div>
         <BrowserRouter>
-          <div>
-            <Routes>
+          <div className='min-h-screen w-full'>
+            <div className='w-full static'>
+              <Navbar />
+            </div>
+            <div>
+              <Routes>
 
-              <Route path='/' element={<LandingPage />} exact />
-              <Route path='/stockdetails/:id' element={<StockDetails />} />
+                <Route exact path='/' element={<LandingPage />} />
+                <Route path='/search' element={<SearchPage />} />
+                <Route path='/stockdetails/:id' element={<StockDetails />} />
 
-            </Routes>
+              </Routes>
+            </div>
           </div>
         </BrowserRouter>
       </div>
